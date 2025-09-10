@@ -65,7 +65,6 @@ jobs:
         working-directory: frontend
 
       - name: Build neuroglancer
-        if: steps.changes.outputs.frontend == 'true'
         run: pnpm --filter neuroglancer run build
         working-directory: frontend
 

@@ -66,7 +66,7 @@ jobs:
       - name: Build neuroglancer
         if: steps.changes.outputs.frontend == 'true'
         run: pnpm build:neuroglancer
-        working-directory: frontend
+        working-directory: frontend/packages/data-portal
 
       - name: run pre-commit
         if: steps.changes.outputs.frontend == 'true'

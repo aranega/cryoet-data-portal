@@ -65,7 +65,7 @@ jobs:
         working-directory: frontend
 
       - name: Build neuroglancer
-        run: pnpm --filter neuroglancer run build
+        run: pnpm build:neuroglancer
         working-directory: frontend
 
       - name: Build GraphQL Types

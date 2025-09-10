@@ -65,7 +65,7 @@ jobs:
 
       - name: Build neuroglancer
         if: steps.changes.outputs.frontend == 'true'
-        run: pnpm --filter neuroglancer run build
+        run: pnpm build:neuroglancer
         working-directory: frontend
 
       - name: run pre-commit

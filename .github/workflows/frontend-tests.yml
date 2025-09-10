@@ -9,13 +9,13 @@ on:
       - main
       - develop-ghactions
     paths:
-      - 'frontend/**'
-      - '.github/workflows/**' # Re-run if a workflow is modified - useful to test workflow changes in PRs
+      - "frontend/**"
+      - ".github/workflows/**" # Re-run if a workflow is modified - useful to test workflow changes in PRs
   pull_request:
     branches:
-      - '**'
+      - "**"
     paths:
-      - 'frontend/**'
+      - "frontend/**"
 
 permissions:
   contents: read
@@ -62,6 +62,11 @@ jobs:
 
       - name: Install dependencies with PNPM
         run: pnpm install --frozen-lockfile
+        working-directory: frontend
+
+      - name: Build neuroglancer
+        if: steps.changes.outputs.frontend == 'true'
+        run: pnpm --filter neuroglancer run build
         working-directory: frontend
 
       - name: Build GraphQL Types

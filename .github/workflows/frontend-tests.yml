@@ -10,6 +10,7 @@ on:
       - develop-ghactions
     paths:
       - 'frontend/**'
+      - '.github/workflows/**' # Re-run if a workflow is modified - useful to test workflow changes in PRs
   pull_request:
     branches:
       - '**'
@@ -59,7 +60,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies with PNPM
-        run: pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install --frozen-lockfile
         working-directory: frontend
 
       - name: Build GraphQL Types
